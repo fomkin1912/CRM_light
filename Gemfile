@@ -5,7 +5,7 @@ ruby '2.2.5'
 gem 'rails', '4.2.2'
 
 group :development do
-  gem 'sqlite3', '1.3.8'
+  gem 'sqlite3', '~> 1.3.8'
   gem 'pry-rails', '0.3.4'
 #  gem 'guard'
 #  gem 'guard-rspec'
@@ -13,21 +13,26 @@ group :development do
 end
 
 group :development, :test do
-#  gem 'rspec-rails', '3.5'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails', '~> 4.4.1'
   gem 'byebug'
   gem 'spring'
 end	
 
-#group :test do
-#  gem 'capybara'
-#end
+group :test do
+  gem 'faker', '~> 1.4.3'
+  gem 'capybara', '~> 2.4.3'
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'launchy', '~> 2.4.2'
+  gem 'selenium-webdriver', '~> 2.43.0'
+end
 
 gem 'haml-rails', '0.9'
 gem 'rubocop', '0.42.0'
 gem 'annotate'
 
 #Standart gems
-gem 'sass-rails', '5.0'
+gem 'sass-rails', '5.0.3'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '3.0.4'
