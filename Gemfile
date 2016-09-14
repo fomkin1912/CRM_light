@@ -30,6 +30,7 @@ end
 gem 'haml-rails', '0.9'
 gem 'rubocop', '0.42.0'
 gem 'annotate'
+gem 'devise', '4.2.0'
 
 #Standart gems
 gem 'sass-rails', '5.0.3'
