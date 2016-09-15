@@ -33,7 +33,7 @@ gem 'annotate'
 gem 'devise', '4.2.0'
 
 #Standart gems
-gem 'sass-rails', '5.0.3'
+gem 'sass-rails', '5.0.6'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '3.0.4'
