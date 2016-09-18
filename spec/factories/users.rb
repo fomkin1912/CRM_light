@@ -2,19 +2,19 @@
 
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    last_name "MyString"
-    mid_name "MyString"
-    email "MyString"
-    phone "MyString"
-    mobile "MyString"
-    skype "MyString"
-    password_digest "MyString"
+    name "Foo"
+    last_name "Bar"
+    mid_name "FooBar"
+    sequence(:email) {|n| "johndoe#{n}@example.com"} 
+    phone "123-45-67"
+    mobile "890-12-34"
+    skype "myskype"
+    password_digest ""
     enabled false
     admin false
     address nil
-    group nil
     department nil
     postiton nil
+
   end
 end
