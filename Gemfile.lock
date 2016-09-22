@@ -253,6 +253,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.4.1)
   faker (~> 1.4.3)
   haml-rails (= 0.9)
+  html2haml
   jbuilder (= 2.0)
   jquery-rails (= 3.0.4)
   launchy (~> 2.4.2)

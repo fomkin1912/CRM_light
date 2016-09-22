@@ -33,6 +33,7 @@ gem 'rubocop', '0.42.0'
 gem 'annotate'
 gem 'devise', '4.2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'html2haml'
 
 #Standart gems
 gem 'sass-rails', '5.0.6'
