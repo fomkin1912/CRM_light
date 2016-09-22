@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915213455) do
+ActiveRecord::Schema.define(version: 20160922065658) do
 
   create_table "group_users", force: :cascade do |t|
     t.integer  "group_id"
@@ -32,27 +32,37 @@ ActiveRecord::Schema.define(version: 20160915213455) do
   add_index "groups", ["name"], name: "index_groups_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                       default: "",    null: false
-    t.string   "last_name",                  default: "",    null: false
-    t.string   "mid_name",                                   null: false
-    t.string   "email",                                      null: false
-    t.string   "phone",           limit: 32
-    t.string   "mobile",          limit: 32
-    t.string   "skype",           limit: 64
-    t.string   "password_digest"
-    t.boolean  "enabled",                    default: false
-    t.boolean  "admin",                      default: false
+    t.string   "name",                              default: "",    null: false
+    t.string   "last_name",                         default: "",    null: false
+    t.string   "mid_name",                          default: "",    null: false
+    t.string   "email",                             default: "",    null: false
+    t.string   "phone",                  limit: 32
+    t.string   "mobile",                 limit: 32
+    t.string   "skype",                  limit: 64
+    t.boolean  "enabled",                           default: false
+    t.boolean  "admin",                             default: false
     t.integer  "address_id"
     t.integer  "group_id"
     t.integer  "department_id"
     t.integer  "postiton_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "encrypted_password",                default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                     default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id"
   add_index "users", ["department_id"], name: "index_users_on_department_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["group_id"], name: "index_users_on_group_id"
   add_index "users", ["postiton_id"], name: "index_users_on_postiton_id"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
