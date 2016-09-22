@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :department
   belongs_to :postiton
 
-  validates :name, :last_name, :mid_name, :email, presence: true
+  #validates :name, :last_name, :mid_name, :email, presence: true
   validates :email, uniqueness: true
   validates :enabled, :admin, inclusion: {in: [true, false]}
   
