@@ -7,6 +7,7 @@ gem 'rails', '4.2.2'
 group :development do
   gem 'sqlite3', '~> 1.3.8'
   gem 'pry-rails', '0.3.4'
+  gem 'rails_layout'
 #  gem 'guard'
 #  gem 'guard-rspec'
 #  gem 'guard-rails'
@@ -31,6 +32,7 @@ gem 'haml-rails', '0.9'
 gem 'rubocop', '0.42.0'
 gem 'annotate'
 gem 'devise', '4.2.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 #Standart gems
 gem 'sass-rails', '5.0.6'
