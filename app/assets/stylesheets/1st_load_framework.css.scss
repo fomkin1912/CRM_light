@@ -80,3 +80,13 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+// MyStyles
+.s_u_container {
+  @extend .container
+}
+.s_u_row {
+  @extend .row 
+}
+.s_u_column6 {
+  @extend .col-md-6
+}
