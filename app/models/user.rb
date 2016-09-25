@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, through: :group_users
  
-  belongs_to :address
+  has_one :address
   belongs_to :group
   belongs_to :department
   belongs_to :postiton
