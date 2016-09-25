@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925034402) do
+ActiveRecord::Schema.define(version: 20160925100605) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20160925034402) do
     t.string   "country",    limit: 32
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "user_id"
   end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
 
   create_table "group_users", force: :cascade do |t|
     t.integer  "group_id"
