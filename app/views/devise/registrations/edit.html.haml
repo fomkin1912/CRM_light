@@ -14,6 +14,12 @@
         = f.fields_for :address do |a|
           = a.label :street
           = a.text_field :street, class: 'form-control'
+      .form-group
+        = f.label :position_id
+        = f.collection_select :position_id, Position.all, :id, :title, html: {class: 'form-control'}
+      .form-group
+        = f.label :department_id
+        = f.collection_select :department_id, Department.all, :id, :title
     %fieldset
       %p Leave these fields blank if you don't want to change your password.
       .form-group

@@ -9,7 +9,6 @@ class Admin::RegistrationsController < Devise::RegistrationsController
 
   def create
      super
-     byebug
      @user.create_address if @user.id
   end
 

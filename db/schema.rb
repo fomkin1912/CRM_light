@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925100605) do
+ActiveRecord::Schema.define(version: 20160925201333) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20160925100605) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "departments", ["title"], name: "index_departments_on_title", unique: true
 
   create_table "group_users", force: :cascade do |t|
     t.integer  "group_id"
@@ -44,6 +52,14 @@ ActiveRecord::Schema.define(version: 20160925100605) do
 
   add_index "groups", ["name"], name: "index_groups_on_name", unique: true
 
+  create_table "positions", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "positions", ["title"], name: "index_positions_on_title", unique: true
+
   create_table "users", force: :cascade do |t|
     t.string   "name",                              default: "",    null: false
     t.string   "last_name",                         default: "",    null: false
@@ -57,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160925100605) do
     t.integer  "address_id"
     t.integer  "group_id"
     t.integer  "department_id"
-    t.integer  "postiton_id"
+    t.integer  "position_id"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.string   "encrypted_password",                default: "",    null: false
@@ -75,7 +91,7 @@ ActiveRecord::Schema.define(version: 20160925100605) do
   add_index "users", ["department_id"], name: "index_users_on_department_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["group_id"], name: "index_users_on_group_id"
-  add_index "users", ["postiton_id"], name: "index_users_on_postiton_id"
+  add_index "users", ["position_id"], name: "index_users_on_position_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
