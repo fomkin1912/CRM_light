@@ -1,0 +1,30 @@
+%h3
+  List of users
+  %table.my_table
+    %thead
+      %tr
+        %th Email
+        %th Name
+        %th Midname
+        %th Last name
+        %th Department
+        %th Position
+        %th Admin
+    %tbody
+      - @users.each do |user|  
+        %tr
+          %td
+            =user.email
+          %td
+            =user.name
+          %td
+            =user.mid_name
+          %td
+            =user.last_name
+          %td
+            =user.department.title if user.department
+          %td
+            =user.position.title if user.position
+          %td
+            =user.admin
+      

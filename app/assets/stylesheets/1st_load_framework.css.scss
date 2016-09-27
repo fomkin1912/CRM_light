@@ -90,3 +90,8 @@ section {
 .s_u_column6 {
   @extend .col-md-6
 }
+.my_table {
+  @extend .table;
+  @extend .table-striped;
+  font-size: 12px;
+}

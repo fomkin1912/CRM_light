@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
      
-    devise_for :users, module: 'admin'
-  
+  scope module: 'admin' do
+    devise_for :users
+  end
+
+  devise_scope :user do
+    get 'users/index', to: 'admin/registrations#index'
+  end
+
   root to: 'welcome#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,5 +1,10 @@
 class Admin::RegistrationsController < Devise::RegistrationsController
 
+  def index
+    @users = User.all
+    render :index
+  end
+
   def new
     super
     @user = User.new
@@ -15,5 +20,7 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   def edit
   	super
   end
+
+
 
 end

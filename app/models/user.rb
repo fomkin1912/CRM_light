@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :address
   belongs_to :group
   belongs_to :department
-  belongs_to :postiton
+  belongs_to :position
 
   #validates :name, :last_name, :mid_name, :email, presence: true
   validates :email, uniqueness: true
