@@ -1,0 +1,27 @@
+%h3
+  List of departments
+  %table.my_table
+    %thead
+      %tr
+        %th Title
+        %th
+    %tbody
+      - @departments.each do |dept|  
+        %tr
+          %td
+            =dept.title
+          %td
+            =link_to 'Edit', edit_department_path(dept)
+            =link_to 'Destroy', department_path(dept), method: :delete
+    %tfoot
+      %tr
+        %td
+          %strong All dept:
+        %td
+          %strong
+            =@departments.length
+%ul.nav.nav-pills
+  %li
+    =link_to "New department", new_department_path
+  %li.active
+    =link_to "Home", root_path

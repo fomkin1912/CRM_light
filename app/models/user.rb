@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
  # validates :email, uniqueness: true
   validates :enabled, :admin, inclusion: {in: [true, false]}
 
-  accepts_nested_attributes_for :address, allow_destroy: true
+  accepts_nested_attributes_for :address, allow_destroy: true, update_only: true
   
 end

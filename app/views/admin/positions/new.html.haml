@@ -1,0 +1,11 @@
+.authform
+  = form_for @position, html: {:role => 'form'} do |f|
+    %h3 New position
+    - if @position.errors.any?
+      #error_explanation
+        = render 'shared/messages', obj: @position
+    .form-group
+      = f.label :title
+      = f.text_field :title, autofocus: true, class: 'form-control'
+    = f.submit "Add position", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

@@ -4,7 +4,7 @@
   = form_for(:user, url: user_path(@user), :html => { :method => :put, :role => 'form'}) do |f|
     - if @user.errors.any?
       #error_explanation
-        = render 'messages'
+        = render 'shared/messages', obj: @user
     .form-group
       = f.label :email
       = f.email_field :email, autofocus: true, class: 'form-control'

@@ -1,0 +1,27 @@
+%h3
+  List of positions
+  %table.my_table
+    %thead
+      %tr
+        %th Title
+        %th
+    %tbody
+      - @positions.each do |dept|  
+        %tr
+          %td
+            =dept.title
+          %td
+            =link_to 'Edit', edit_position_path(dept)
+            =link_to 'Destroy', position_path(dept), method: :delete
+    %tfoot
+      %tr
+        %td
+          %strong All positions:
+        %td
+          %strong
+            =@positions.length
+%ul.nav.nav-pills
+  %li
+    =link_to "New position", new_position_path
+  %li.active
+    =link_to "Home", root_path

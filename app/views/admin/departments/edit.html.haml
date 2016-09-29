@@ -1,0 +1,11 @@
+.authform
+  = form_for @department, html: {method: :patch, :role => 'form'} do |f|
+    %h3 Change department
+    - if @department.errors.any?
+      #error_explanation
+        = render 'shared/messages', obj: @department
+    .form-group
+      = f.label :title
+      = f.text_field :title, autofocus: true, class: 'form-control'
+    = f.submit "Change department", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

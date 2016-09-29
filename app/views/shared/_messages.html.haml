@@ -1,0 +1,5 @@
+%h2
+  = pluralize(obj.errors.count, 'error') + ' prohibiting this record to be saved:'
+- obj.errors.full_messages.each do |msg|
+  %ul
+    %li= msg

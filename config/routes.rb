@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   scope module: 'admin' do
     resources :users, except: [:create]
     resources :users, path: 'my_users', only: [:create]
+    resources :departments
+    resources :positions
   end
 
   root to: 'welcome#index'

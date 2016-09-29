@@ -3,7 +3,7 @@
     %h3 Sign up
     - if @user.errors.any?
       #error_explanation
-        = render 'messages'
+        = render 'shared/messages', obj: @user
     .form-group
       = f.label :name
       = f.text_field :name, autofocus: true, class: 'form-control'
