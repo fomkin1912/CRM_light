@@ -1,0 +1,27 @@
+%h3
+  List of groups
+  %table.my_table
+    %thead
+      %tr
+        %th Title
+        %th
+    %tbody
+      - @groups.each do |group|  
+        %tr
+          %td
+            =group.name
+          %td
+            =link_to 'Edit', edit_group_path(group)
+            =link_to 'Destroy', group_path(group), method: :delete
+    %tfoot
+      %tr
+        %td
+          %strong All group:
+        %td
+          %strong
+            =@groups.length
+%ul.nav.nav-pills
+  %li
+    =link_to "New group", new_group_path
+  %li.active
+    =link_to "Home", root_path
