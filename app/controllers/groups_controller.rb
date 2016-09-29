@@ -10,9 +10,8 @@ end
 
 def create
   @group = Group.new(group_params)
-  
   if @group.save
-    @group
+    @group.users << current_user
     redirect_to groups_path, notice: 'New group created.'
   else
     render 'new'

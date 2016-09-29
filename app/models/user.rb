@@ -17,5 +17,9 @@ class User < ActiveRecord::Base
   validates :enabled, :admin, inclusion: {in: [true, false]}
 
   accepts_nested_attributes_for :address, allow_destroy: true, update_only: true
-  
+
+  def full_name
+    [name, mid_name, last_name].join(' ').gsub('  ', ' ')
+  end
+
 end

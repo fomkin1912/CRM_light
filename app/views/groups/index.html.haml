@@ -11,7 +11,7 @@
       - @groups.each do |group|  
         %tr
           %td= group.name
-          %td= group.owner.name
+          %td= group.owner.full_name
           %td= render 'users_in_group', obj: group.users if group.users.any?
           %td
             =link_to 'Edit', edit_group_path(group)

@@ -8,6 +8,15 @@
     .form-group
       = f.label :email
       = f.email_field :email, autofocus: true, class: 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :mid_name
+      = f.text_field :mid_name, class: 'form-control'
+    .form-group
+      = f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
     %fieldset
       .form-group
         = f.fields_for :address_attributes, @user.address do |a|
