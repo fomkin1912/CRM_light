@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
      
+  devise_for :users, controllers: {:registrations => 'admin/registrations', :sessions => 'admin/sessions'}
+  
   scope module: 'admin' do
-    devise_for :users
-  end
-
-  devise_scope :user do
-    get 'users/index', to: 'admin/registrations#index'
+    resources :users, except: [:create]
+    resources :users, path: 'my_users', only: [:create]
   end
 
   root to: 'welcome#index'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

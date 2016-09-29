@@ -1,0 +1,5 @@
+%h2
+  = pluralize(@user.errors.count, 'error') + ' prohibiting this record to be saved:'
+- @user.errors.full_messages.each do |msg|
+  %ul
+    %li= msg

@@ -1,13 +1,8 @@
 -if user_signed_in?
   -if current_user.admin?
-    -if params[:controller] != 'registrations'
-      %li= link_to "List of users for #{params[:controller]}", '#'
-      %li= link_to 'Edit account', edit_user_registration_path
-    -else
-      %li= link_to 'Something else', '#'
-    %li= link_to 'Sign out', destroy_user_session_path, :method=>'delete'
-  -else
-    %li= link_to 'Sign out', destroy_user_session_path, :method=>'delete'
+    %li= link_to 'List of users', users_path
+    %li= link_to 'Edit account', edit_user_registration_path
+  %li= link_to 'Sign out', destroy_user_session_path, :method=>'delete'
 -else
   %li= link_to 'Sign in', new_user_session_path
   %li= link_to 'Sign up', new_user_registration_path

@@ -1,0 +1,22 @@
+.authform
+  %h3
+    Edit user
+  = form_for(:user, url: user_path(@user), :html => { :method => :put, :role => 'form'}) do |f|
+    - if @user.errors.any?
+      #error_explanation
+        = render 'messages'
+    .form-group
+      = f.label :email
+      = f.email_field :email, autofocus: true, class: 'form-control'
+    %fieldset
+      .form-group
+        = f.fields_for :address_attributes, @user.address do |a|
+          = a.label :street
+          = a.text_field :street, class: 'form-control'
+      .form-group
+        = f.label :position_id
+        = f.collection_select :position_id, Position.all, :id, :title, include_blank: true
+      .form-group
+        = f.label :department_id
+        = f.collection_select :department_id, Department.all, :id, :title, include_blank: true
+      = f.submit 'Update', :class => 'button right'

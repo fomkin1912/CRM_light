@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   belongs_to :position
 
   #validates :name, :last_name, :mid_name, :email, presence: true
-  validates :email, uniqueness: true
+ # validates :email, uniqueness: true
   validates :enabled, :admin, inclusion: {in: [true, false]}
 
   accepts_nested_attributes_for :address, allow_destroy: true

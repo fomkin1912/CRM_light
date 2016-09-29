@@ -10,6 +10,7 @@
         %th Department
         %th Position
         %th Admin
+        %th
     %tbody
       - @users.each do |user|  
         %tr
@@ -27,4 +28,19 @@
             =user.position.title if user.position
           %td
             =user.admin
-      
+          %td
+            =link_to 'Edit', edit_user_path(user)
+            =link_to 'Destroy', user_path(user), method: :delete
+    %tfoot
+      %tr
+        %td{:span => 3}
+          %strong All users:
+        %td
+          %strong
+            =@users.length
+        %td{:span => 3}
+%ul.nav.nav-pills
+  %li
+    =link_to "New user", new_user_path
+  %li.active
+    =link_to "Back", :back

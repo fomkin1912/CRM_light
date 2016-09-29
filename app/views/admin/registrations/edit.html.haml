@@ -16,10 +16,10 @@
           = a.text_field :street, class: 'form-control'
       .form-group
         = f.label :position_id
-        = f.collection_select :position_id, Position.all, :id, :title, html: {class: 'form-control'}
+        = f.collection_select :position_id, Position.all, :id, :title, include_blank: true
       .form-group
         = f.label :department_id
-        = f.collection_select :department_id, Department.all, :id, :title
+        = f.collection_select :department_id, Department.all, :id, :title, include_blank: true
     %fieldset
       %p Leave these fields blank if you don't want to change your password.
       .form-group

@@ -1,0 +1,24 @@
+.authform
+  = form_for @user, :url => '/my_users', :html => {:role => 'form'} do |f|
+    %h3 Sign up
+    - if @user.errors.any?
+      #error_explanation
+        = render 'messages'
+    .form-group
+      = f.label :name
+      = f.text_field :name, autofocus: true, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+    %fieldset
+      .form-group
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        = f.password_field :password, autocomplete: "off", :class => 'form-control'
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control'
+    = f.submit "Sign up", :class => 'button right'
+    = render "layouts/nav_links_for_auth.html.haml"
