@@ -12,6 +12,7 @@ def create
   @group = Group.new(group_params)
   
   if @group.save
+    @group
     redirect_to groups_path, notice: 'New group created.'
   else
     render 'new'
@@ -53,7 +54,7 @@ end
 private
 
 def group_params
-  params.require(:group).permit(:name)
+  params.require(:group).permit(:name, :created_by)
 end
 
 end  

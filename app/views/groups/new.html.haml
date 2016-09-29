@@ -7,5 +7,8 @@
     .form-group
       = f.label :name
       = f.text_field :name, autofocus: true, class: 'form-control'
+    .form-group
+      = f.text_field :created_by, hidden: "hidden", value: current_user.id
+
     = f.submit "Add group", :class => 'button right'
     = render "shared/form_nav_links", locals: { back: true }

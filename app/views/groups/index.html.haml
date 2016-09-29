@@ -4,22 +4,27 @@
     %thead
       %tr
         %th Title
+        %th Created by
+        %th Users in group
         %th
     %tbody
       - @groups.each do |group|  
         %tr
-          %td
-            =group.name
+          %td= group.name
+          %td= group.owner.name
+          %td= render 'users_in_group', obj: group.users if group.users.any?
           %td
             =link_to 'Edit', edit_group_path(group)
             =link_to 'Destroy', group_path(group), method: :delete
     %tfoot
       %tr
-        %td
-          %strong All group:
+        %td{:span => 3}
+          %strong All groups
         %td
           %strong
             =@groups.length
+        %td
+        %td 
 %ul.nav.nav-pills
   %li
     =link_to "New group", new_group_path
