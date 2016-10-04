@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
         
     else
       if @group.update(group_params)
-        flash[:notice] 'Group updated.'
+        flash[:notice] = 'Group updated.'
       else
         render 'edit'
       end
