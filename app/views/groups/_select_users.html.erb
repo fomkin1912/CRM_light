@@ -1,0 +1,14 @@
+<div class="page-header input-group input-group-sm">
+  <p><h3> Add users to group </h3></p>
+    <%= form_tag add_users_groups_path, method: :post do %>
+      <%= collection_check_boxes :group, :user_ids, User.all, :id, :full_name do |b| %>
+		<p>
+		  <span class="input-group-addon">
+		    <%= b.check_box %>
+		  </span>      
+		</p>	
+      <%= b.label class: "form-control" %>
+    <% end %>
+    <%= submit_tag 'Add users', class: "btn" %>
+  <% end %> 
+</div>        

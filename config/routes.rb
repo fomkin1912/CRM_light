@@ -9,9 +9,15 @@ Rails.application.routes.draw do
     resources :positions
   end
 
+# Pathes for mass assignment users to group
+  get 'groups/select_users/:id', to: 'groups#select_users', as: :select_users_groups
+  match 'groups/add_users/:id', to: 'groups#add_users', as: :add_users_groups, via: 'post'
+
   resources :groups
 
   root to: 'welcome#index'
+
+  #Path to add_users action in GroupsController
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

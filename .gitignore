@@ -17,4 +17,4 @@
 /tmp
 
 # Ignore byebug history
-.byebug_history
+/.byebug_history
