@@ -6,4 +6,9 @@ class Group < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  def update_users(user_ids)
+  	self.users = User.where(id: user_ids)
+  	self.save
+  end
+   	
 end

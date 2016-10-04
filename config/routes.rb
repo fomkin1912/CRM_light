@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   end
 
 # Pathes for mass assignment users to group
-  get 'groups/select_users/:id', to: 'groups#select_users', as: :select_users_groups
-  match 'groups/add_users/:id', to: 'groups#add_users', as: :add_users_groups, via: 'post'
+#  get 'groups/select_users/:id', to: 'groups#select_users', as: :select_users_groups
 
   resources :groups
 

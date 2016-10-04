@@ -1,7 +1,5 @@
 class GroupsController < ApplicationController
 
-  respond_to :html, :js
-
   def index
     @groups = Group.all
   end
@@ -27,11 +25,22 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
 
-    if @group.update(group_params)
-      redirect_to groups_path, notice: 'Group updated.'
+    if params.include?(:ids)
+      if @group.update_users  
+        flash[:notice] = 'Users in group updated.'
+      else
+        flash[:alert] = 'Users in group were not updated.'     
+      end
+        
     else
-      render 'edit'
+      if @group.update(group_params)
+        flash[:notice] 'Group updated.'
+      else
+        render 'edit'
+      end
     end
+
+    redirect_to groups_path
 
   end
 
@@ -49,29 +58,6 @@ class GroupsController < ApplicationController
       end
       redirect_to groups_path
   end
-
-    def select_users
-      @group = Group.find(params[:id])
-    end
-
-    def add_users
-      @group = Group.find(params[:id])
-    # Add new users
-      new_users = params[:group][:user_ids]
-      old_users = @group.users.map {|x| x.id.to_s } + [""]
-      add_users = new_users.reject { |item| old_users.include?(item) }
-      
-      add_users.each do |id|
-        @group.users << User.find(id)
-      end
-    
-    # Delete unwanted users
-      delete_users = old_users.reject { |item| new_users.include?(item) }
-      @group.group_users.where(user_id: delete_users).destroy_all
-      
-      redirect_to groups_path, notice: 'Users were added.'
-      
-    end
 
   private
 

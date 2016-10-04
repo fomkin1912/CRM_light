@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-3
-      #select_users{style: "display:none"}
+      #update_users{style: "display:none"}
     .col-md-9
       %h3
         List of groups
@@ -21,7 +21,7 @@
                   - if group.users.any?
                     = render 'users_in_group', obj: group.users
                 %td
-                  =link_to "Add new users | ", select_users_groups_path(group.id), remote: true
+                  =link_to "Update users | ", edit_group_path(group), remote: true
                   =link_to 'Edit group | ', edit_group_path(group)
                   =link_to 'Destroy group', group_path(group), method: :delete
           %tfoot

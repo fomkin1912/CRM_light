@@ -1,6 +1,6 @@
 <div class="page-header input-group input-group-sm">
   <p><h3> Add users to group </h3></p>
-    <%= form_tag add_users_groups_path, method: :post do %>
+    <%= form_tag group_path, method: :put do %>
       <%= collection_check_boxes :group, :user_ids, User.all, :id, :full_name do |b| %>
 		<p>
 		  <span class="input-group-addon">
@@ -9,6 +9,6 @@
 		</p>	
       <%= b.label class: "form-control" %>
     <% end %>
-    <%= submit_tag 'Add users', class: "btn" %>
+    <%= submit_tag 'Update users', class: "btn" %>
   <% end %> 
 </div>        
