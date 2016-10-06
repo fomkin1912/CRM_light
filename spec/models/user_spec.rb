@@ -12,10 +12,9 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("can't be blank")
   end
 
-  it "invalid without last_name" do
+  it "valid without last_name" do
     user = FactoryGirl.build(:user, last_name: "")
-    user.valid?
-    expect(user.errors[:last_name]).to include("can't be blank")
+    expect(user).to be_valid
   end 
 
   it "invalid without email" do
@@ -26,8 +25,7 @@ RSpec.describe User, type: :model do
 
   it "invalid without mid_name" do
     user = FactoryGirl.build(:user, mid_name: nil)
-    user.valid?
-    expect(user.errors[:mid_name]).to include("can't be blank")
+    expect(user).to be_valid
   end 
   
   it "invalid without enabled" do

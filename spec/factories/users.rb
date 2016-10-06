@@ -9,12 +9,12 @@ FactoryGirl.define do
     phone "123-45-67"
     mobile "890-12-34"
     skype "myskype"
-    password_digest ""
     enabled false
     admin false
     address nil
     department nil
-    postiton nil
+    position nil
+    password 'password'
 
   end
 end
