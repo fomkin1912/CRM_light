@@ -11,7 +11,6 @@ FactoryGirl.define do
     skype "myskype"
     enabled false
     admin false
-    address nil
     department nil
     position nil
     password 'password'

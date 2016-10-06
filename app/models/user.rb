@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address, allow_destroy: true, update_only: true
 
   def full_name
-    [name, mid_name, last_name].join(' ').gsub('  ', ' ')
+    [name, mid_name, last_name].reject{ |x| x.empty? }.join(' ')
   end
 
   def init
