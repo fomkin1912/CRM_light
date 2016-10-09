@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :groups
 
+  resources :company_types
+
   root to: 'welcome#index'
 
   #Path to add_users action in GroupsController

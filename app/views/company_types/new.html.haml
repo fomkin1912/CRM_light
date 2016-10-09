@@ -1,0 +1,12 @@
+.authform
+  = form_for @company_type, html: {:role => 'form'} do |f|
+    %h3 New type of company
+    - if @company_type.errors.any?
+      #error_explanation
+        = render 'shared/messages', obj: @company_type
+    .form-company_type
+      = f.label :title
+      = f.text_field :title, autofocus: true, class: 'form-control'
+
+    = f.submit "Add type", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

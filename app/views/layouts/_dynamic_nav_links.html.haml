@@ -1,6 +1,7 @@
 -if user_signed_in?
   %li= link_to "Groups", groups_path
   -if current_user.admin?
+    %li= link_to 'Company types', company_types_path
     %li= link_to 'Departments', departments_path
     %li= link_to 'Posititons', positions_path
     %li= link_to 'List of users', users_path
