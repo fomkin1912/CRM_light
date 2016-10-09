@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929075241) do
+ActiveRecord::Schema.define(version: 20161007084922) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64
@@ -25,6 +25,31 @@ ActiveRecord::Schema.define(version: 20160929075241) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "first_name",             default: "",       null: false
+    t.string   "last_name",              default: "",       null: false
+    t.string   "mid_name",               default: "",       null: false
+    t.string   "email"
+    t.string   "alt_email"
+    t.string   "phone",       limit: 24
+    t.string   "mobile",      limit: 24
+    t.string   "skype",       limit: 32
+    t.integer  "address_id"
+    t.string   "access",      limit: 12, default: "Public"
+    t.integer  "user_id"
+    t.integer  "assigned_to"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "contacts", ["address_id"], name: "index_contacts_on_address_id"
+  add_index "contacts", ["assigned_to"], name: "index_contacts_on_assigned_to"
+  add_index "contacts", ["first_name", "mid_name", "last_name"], name: "index_contacts_on_first_name_and_mid_name_and_last_name", unique: true
+  add_index "contacts", ["first_name"], name: "index_contacts_on_first_name"
+  add_index "contacts", ["last_name"], name: "index_contacts_on_last_name"
+  add_index "contacts", ["mid_name"], name: "index_contacts_on_mid_name"
+  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
 
   create_table "departments", force: :cascade do |t|
     t.string   "title"
