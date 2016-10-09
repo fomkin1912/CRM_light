@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007084922) do
+ActiveRecord::Schema.define(version: 20161009065626) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20161007084922) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
+
+  create_table "company_types", force: :cascade do |t|
+    t.string   "title",      default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "company_types", ["title"], name: "index_company_types_on_title", unique: true
 
   create_table "contacts", force: :cascade do |t|
     t.string   "first_name",             default: "",       null: false
