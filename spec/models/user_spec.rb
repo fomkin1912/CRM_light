@@ -76,12 +76,12 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context "Init method" do
-      it "trigger :init after initialize callback" do
-        user = User.create(name: "John", email: "j@J", password: "password")
-        expect(user.address_id).to be_a(Integer)
-      end
-    end
+    #context "Init method" do
+    #  it "trigger :init after initialize callback" do
+    #    user = User.create(name: "John", email: "j@J", password: "password")
+    #    expect(user.address_id).to be_a(Integer)
+    #  end
+    #end
       
   end
 end
