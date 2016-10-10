@@ -9,28 +9,32 @@
           %thead
             %tr
               %th Title
+              %th Full title
+              %th Type
               %th Creat at
               %th Updated at
               %th
           %tbody
-            -@company_types.each do |type|  
+            -@companies.each do |comp|  
               %tr
-                %td= type.title
-                %td= type.created_at
-                %td= type.updated_at
+                %td= comp.title
+                %td= comp.full_title
+                %td= comp.company_type.title
+                %td= comp.created_at
+                %td= comp.updated_at
                 %td
-                  =link_to 'Edit type | ', edit_company_type_path(type)
-                  =link_to 'Destroy type', company_type_path(type), method: :delete
+                  =link_to 'Edit company | ', edit_company_path(comp)
+                  =link_to 'Destroy company', company_path(comp), method: :delete
           %tfoot
             %tr
-              %td{:span => 2}
-                %strong All company_types
+              %td{:span => 4}
+                %strong All companies
               %td
                 %strong
-                  =@company_types.length
+                  =@companies.length
               %td
-        %ul.nav.nav-pills
-          %li
-            =link_to "New type", new_company_type_path
-          %li.active
-            =link_to "Home", root_path
+      %ul.nav.nav-pills
+        %li
+          =link_to "New comp", new_company_path
+        %li.active
+          =link_to "Home", root_path

@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
 	def index
-	  @company = Company.all
+	  @companies = Company.all
   end
 
 	def new
@@ -41,8 +41,8 @@ class CompaniesController < ApplicationController
   
   private
 
-  def companis_params
-    params.require(:company).permit([:title, :company_type_id])
+  def company_params
+    params.require(:company).permit([:title, :full_title, :company_type_id])
   end
 
 end
