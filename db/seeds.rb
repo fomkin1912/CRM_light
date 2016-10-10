@@ -11,26 +11,33 @@
     sec = Position.create(title: "Secretary")
     boss = Position.create(title: "Boss")
 
-		admin = User.create(name: "Admin user", email: "1@1", last_name: "Pupkin", password: "123123", admin: true, enabled: true)
+	admin = User.create(name: "Admin user", email: "1@1", last_name: "Pupkin", password: "123123", admin: true, enabled: true)
     User.create(name: "Ivan", mid_name: "Sergeevich", last_name: "Kojemiako", email: "2@2", password: "123123", admin: false, enabled: true, department_id: admin_dept.id, position_id: sec.id)
     User.create(name: "Alexander", mid_name: "Ivanovich", last_name: "Ivanov", email: "3@3", password: "123123", admin: false, enabled: true, department_id: exec_dept.id, position_id: boss.id)
 
     Group.create(name: "First group", created_by: admin.id)
-		Group.create(name: "Second group", created_by: admin.id)
-		Group.create(name: "Third group", created_by: admin.id)
+	Group.create(name: "Second group", created_by: admin.id)
+	Group.create(name: "Third group", created_by: admin.id)
+
+    Contact.create(first_name: "Иван", mid_name: "Сереевич", last_name: "Петров",
+                   email: "123@sf.com", alt_email: "wewt@sfjlj.ru", phone: "2134-234-234",
+                   mobile: "230023-3990", skype: "124-lfjl32", user_id: admin.id)
+    Contact.create(first_name: "Александр", mid_name: "Эдмундович", last_name: "Жарикоа",
+                   email: "123@sf.com", alt_email: "wewt@sfjlj.ru", phone: "2134-234-234",
+                   mobile: "230023-3990", skype: "124-lfjl32", user_id: admin.id)
+    Contact.create(first_name: "Автандил", mid_name: "Тимофеевич", last_name: "Резаков",
+                   email: "123@sf.com", alt_email: "wewt@sfjlj.ru", phone: "2134-234-234",
+                   mobile: "230023-3990", skype: "124-lfjl32", user_id: admin.id)
 
 
-		others_type = CompanyType.create(title: "Others")
-		bank_type = CompanyType.create(title: "Banks")
-		CompanyType.create(title: "Autodilers")
 
-		others_type.companies.create(title: "RP, inc", full_title: "Robust programmers. inc")
+	others_type = CompanyType.create(title: "Others")
+	bank_type = CompanyType.create(title: "Banks")
+	CompanyType.create(title: "Autodilers")
+
+	others_type.companies.create(title: "RP, inc", full_title: "Robust programmers. inc")
     others_type.companies.create(title: "CC-best", full_title: "Civil construction best, JSC")
     bank_type.companies.create(title: "BBBF-bank", full_title: "Best bank for better future, JSC")
-
-    admin_dept = Department.create(title: "Administrative")
-    exec_dept = Department.create(title: "Executive")
-
 
 
 		

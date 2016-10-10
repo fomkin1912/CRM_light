@@ -14,20 +14,13 @@
     %tbody
       - @users.each do |user|  
         %tr
-          %td
-            =user.email
-          %td
-            =user.name
-          %td
-            =user.mid_name
-          %td
-            =user.last_name
-          %td
-            =user.department.title if user.department
-          %td
-            =user.position.title if user.position
-          %td
-            =user.admin
+          %td= user.email
+          %td= user.name
+          %td= user.mid_name
+          %td= user.last_name
+          %td= user.department.title if user.department
+          %td= user.position.title if user.position
+          %td= user.admin
           %td
             =link_to 'Edit', edit_user_path(user)
             =link_to 'Destroy', user_path(user), method: :delete
