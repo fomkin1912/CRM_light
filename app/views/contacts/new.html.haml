@@ -1,0 +1,10 @@
+.authform
+  = form_for @contact, html: {:role => 'form'} do |f|
+    %h3 New contact
+    - if @contact.errors.any?
+      #error_explanation
+        = render 'shared/messages', obj: @contact
+
+    = render 'form', f: f
+    = f.submit "Add contact", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

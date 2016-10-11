@@ -1,7 +1,8 @@
 class Contact < ActiveRecord::Base
   has_many :addresses, inverse_of: :addresses
-  belongs_to :user, inverse_of: :user
-  belongs_to :assignee, foreign_key: "assigned_to", class_name: "user", inverse_of: :user
+
+  belongs_to :user
+  belongs_to :assignee, foreign_key: "assigned_to", class_name: "User"
 
   validates :first_name, :user_id, :access, presence:true
   
@@ -14,7 +15,7 @@ class Contact < ActiveRecord::Base
 
   def name
     return nil if first_name.blank?
-    return first_name if last_name.empty? && mid_name.empty?
+    return first_name if last_name.empty? && mid_name.empty? || last_name.empty?
   	last_name + ' ' + [first_name, mid_name].reject { |n| n.blank? }.map { |n| n[0].upcase + '.' }.join(' ')
 	
   end

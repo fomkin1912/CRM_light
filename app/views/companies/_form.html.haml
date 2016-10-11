@@ -1,0 +1,9 @@
+.form-company
+  = f.label :title
+  = f.text_field :title, autofocus: true, class: 'form-control'
+.form-company
+  = f.label :full_title
+  = f.text_field :full_title, class: 'form-control'
+.form-company
+  = f.label :company_type_id
+  = f.collection_select :company_type_id, CompanyType.all, :id, :title, class: 'form-control'

@@ -1,0 +1,40 @@
+.container
+  .row
+    .col-md-3
+      #company_types{style: "display:none"}
+    .col-md-9
+      %h3
+        Types of companies
+        %table.my_table
+          %thead
+            %tr
+              %th Title
+              %th Full title
+              %th Type
+              %th Creat at
+              %th Updated at
+              %th
+          %tbody
+            -@companies.each do |comp|  
+              %tr
+                %td= comp.title
+                %td= comp.full_title
+                %td= comp.company_type.title
+                %td= comp.created_at
+                %td= comp.updated_at
+                %td
+                  =link_to 'Edit company | ', edit_company_path(comp)
+                  =link_to 'Destroy company', company_path(comp), method: :delete
+          %tfoot
+            %tr
+              %td{:span => 4}
+                %strong All companies
+              %td
+                %strong
+                  =@companies.length
+              %td
+      %ul.nav.nav-pills
+        %li
+          =link_to "New comp", new_company_path
+        %li.active
+          =link_to "Home", root_path

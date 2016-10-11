@@ -1,0 +1,10 @@
+.authform
+  = form_for @company, html: {:role => 'form'} do |f|
+    %h3 New company
+    - if @company.errors.any?
+      #error_explanation
+        = render 'shared/messages', obj: @company
+
+    = render 'form', f: f
+    = f.submit "Add company", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

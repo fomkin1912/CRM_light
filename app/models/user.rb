@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
  
   has_one :address
   has_many :contacts
-  has_many :assigned_contacts, class_name: :contacts, foreign_key: "assigned_to", validate: true, inverse_of: :contacts
+  has_many :assigned_contacts, class_name: :contacts, foreign_key: "assigned_to", validate: true
 
   belongs_to :group
   belongs_to :department

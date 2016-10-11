@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 #  get 'groups/select_users/:id', to: 'groups#select_users', as: :select_users_groups
 
   resources :groups
+  resources :company_types
+  resources :companies
+  resources :contacts
 
   root to: 'welcome#index'
 
