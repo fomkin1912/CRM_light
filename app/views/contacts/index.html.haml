@@ -9,6 +9,7 @@
           %thead
             %tr
               %th Full name
+              %th Company
               %th Email
               %th Phone
               %th Mobile
@@ -21,6 +22,7 @@
             -@contacts.each do |contact|  
               %tr
                 %td= contact.full_name
+                %td= contact.company.title if contact.company
                 %td= contact.email
                 %td= contact.phone
                 %td= contact.mobile
@@ -33,7 +35,7 @@
                   =link_to 'Destroy contact', contact_path(contact), method: :delete
           %tfoot
             %tr
-              %td{:span => 7}
+              %td{:span => 8}
                 %strong All contacts
               %td
                 %strong

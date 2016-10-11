@@ -27,7 +27,7 @@ class ContactsController < ApplicationController
 	def update
 	  @contact = Contact.find(params[:id])
 	  if @contact.update(contact_params)
-	    redirect_to contacts_path, notice: "New contact #{@contact.full_name} updated."
+	    redirect_to contacts_path, notice: "Contact #{@contact.full_name} updated."
 	  else
 	    render 'edit'
 	  end
@@ -41,7 +41,7 @@ class ContactsController < ApplicationController
 	private
 
 	def contact_params
-	  params.require(:contact).permit([:first_name, :mid_name, :last_name, :email, :alt_email, :phone, :mobile, :skype, :address_id, :access])
+	  params.require(:contact).permit([:first_name, :mid_name, :last_name, :email, :alt_email, :phone, :mobile, :skype, :address_id, :access, :company_id])
 	end
 
 end

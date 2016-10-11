@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009101543) do
+ActiveRecord::Schema.define(version: 20161011015847) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",     limit: 64
@@ -36,16 +36,6 @@ ActiveRecord::Schema.define(version: 20161009101543) do
 
   add_index "companies", ["company_type_id"], name: "index_companies_on_company_type_id"
 
-  create_table "company_contacts", id: false, force: :cascade do |t|
-    t.integer  "company_id"
-    t.integer  "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "company_contacts", ["company_id"], name: "index_company_contacts_on_company_id"
-  add_index "company_contacts", ["contact_id"], name: "index_company_contacts_on_contact_id"
-
   create_table "company_types", force: :cascade do |t|
     t.string   "title",      default: "", null: false
     t.datetime "created_at",              null: false
@@ -69,10 +59,12 @@ ActiveRecord::Schema.define(version: 20161009101543) do
     t.integer  "assigned_to"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.integer  "company_id"
   end
 
   add_index "contacts", ["address_id"], name: "index_contacts_on_address_id"
   add_index "contacts", ["assigned_to"], name: "index_contacts_on_assigned_to"
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id"
   add_index "contacts", ["first_name", "mid_name", "last_name"], name: "index_contacts_on_first_name_and_mid_name_and_last_name", unique: true
   add_index "contacts", ["first_name"], name: "index_contacts_on_first_name"
   add_index "contacts", ["last_name"], name: "index_contacts_on_last_name"

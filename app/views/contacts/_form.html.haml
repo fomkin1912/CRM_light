@@ -7,6 +7,9 @@
 .form-company
   = f.label :last_name
   = f.text_field :last_name, class: 'form-control'
+.form-group
+  = f.label :company_id
+  = f.collection_select :company_id, Company.all, :id, :title, include_blank: true, html: {class: 'form-control'}
 .form-company
   = f.label :email
   = f.email_field :email, class: 'form-control'

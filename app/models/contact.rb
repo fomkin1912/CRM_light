@@ -1,11 +1,10 @@
 class Contact < ActiveRecord::Base
-  has_many :addresses, inverse_of: :addresses
-
+  has_many :addresses
+  belongs_to :company
   belongs_to :user
   belongs_to :assignee, foreign_key: "assigned_to", class_name: "User"
 
   validates :first_name, :user_id, :access, presence:true
-  
   validate :full_name_must_be_unique
 
   def full_name
@@ -20,8 +19,10 @@ class Contact < ActiveRecord::Base
 	
   end
 
+  private
+
   def full_name_must_be_unique
-  	errors.add(:full_name, "Full_name must be unique") if Contact.find_by(first_name: first_name, mid_name: mid_name, last_name: last_name).present?
+    contact = Contact.where(["first_name = ? and mid_name =  ? and last_name = ? and id <> ?", first_name, mid_name, last_name, id])
+    errors.add(:full_name, "Full_name must be unique") if contact.present?
   end
- 
 end

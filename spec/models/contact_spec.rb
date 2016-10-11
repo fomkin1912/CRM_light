@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Contact, type: :model do
   
   describe "validations" do
-  	it "valid with first name and user_id" do
+  	it "valid with first name, company_id and user_id" do
   	  expect(Contact.new(first_name: "Ivan", user_id: 1)).to be_valid
   	end
   	it "invalid without 'user_id'" do
@@ -11,7 +11,7 @@ RSpec.describe Contact, type: :model do
   	  contact.valid?	
   	  expect(contact.errors[:user_id]).to include("can't be blank")
   	end
-  	it "invalid without first_name" do
+    it "invalid without first_name" do
   	  contact = FactoryGirl.build(:contact, first_name:  "   ")
   	  contact.valid?	
   	  expect(contact.errors[:first_name]).to include("can't be blank")
@@ -34,7 +34,10 @@ RSpec.describe Contact, type: :model do
   	end
   	it "belongs to Assignee" do
   	  expect(Contact.reflect_on_association(:assignee).macro).to eq(:belongs_to)
-  	end	
+  	end
+    it "belongs to Company" do
+      expect(Contact.reflect_on_association(:company).macro).to eq(:belongs_to)
+    end 
   end
 
   describe "instanse methods" do

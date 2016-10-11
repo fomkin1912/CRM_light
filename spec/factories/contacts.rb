@@ -10,5 +10,6 @@ FactoryGirl.define do
     phone "MyString"
     mobile "MyString"
     user_id 1
+    company_id 4
   end
 end
