@@ -8,8 +8,8 @@
         %table.my_table
           %thead
             %tr
-              %th Title
-              %th Created by
+              %th= sortable("name", "Title")
+              %th= sortable("created_by", "Created by")
               %th Users in group
               %th
           %tbody
