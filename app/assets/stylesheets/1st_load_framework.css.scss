@@ -95,3 +95,10 @@ section {
   @extend .table-striped;
   font-size: 12px;
 }
+th .asc {
+  background-image: url('up_arrow.gif');
+ }
+
+th .desc {
+  background-image: url('down_arrow.gif');
+}
