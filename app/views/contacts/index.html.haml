@@ -8,15 +8,15 @@
         %table.my_table
           %thead
             %tr
-              %th Full name
-              %th Company
+              %th= sortable("last_name", "Full name", "columns" => ["first_name", "mid_name"])
+              %th= sortable("company_id", "Company")
               %th Email
               %th Phone
               %th Mobile
               %th Skype
               %th Access
-              %th Created by
-              %th Assigned to
+              %th= sortable("user_id", "Created by")
+              %th= sortable("assigned_to", "Assigned to")
               %th
           %tbody
             -@contacts.each do |contact|  

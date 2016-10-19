@@ -4,15 +4,15 @@
       #company_types{style: "display:none"}
     .col-md-9
       %h3
-        Types of companies
+        Companies
         %table.my_table
           %thead
             %tr
-              %th Title
-              %th Full title
-              %th Type
-              %th Creat at
-              %th Updated at
+              %th= sortable("title")
+              %th= sortable("full_title", "Full title")
+              %th= sortable("company_type_id", "Type")
+              %th= sortable("created_at", "Created at")
+              %th= sortable("updated_at", "Updated at")
               %th
           %tbody
             -@companies.each do |comp|  

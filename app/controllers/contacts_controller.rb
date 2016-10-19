@@ -1,11 +1,7 @@
 class ContactsController < ApplicationController
 
 	def index
-	  @contacts = Contact.all
-	  #respond_to do |format|
-	  #	format.js
-	  #	format.html
-	  #end
+	  @contacts = Contact.order(sort_clause)
 	end
 
 	def new

@@ -1,9 +1,7 @@
 class GroupsController < ApplicationController
 
-helper_method :sort_column, :sort_direction
-
   def index
-    @groups = Group.order(sort_column + " " + sort_direction)
+    @groups = Group.order(sort_clause)
   end
 
   def new
@@ -65,14 +63,6 @@ helper_method :sort_column, :sort_direction
 
   def group_params
     params.require(:group).permit(:name, :created_by, user_ids: [])
-  end
-
-  def sort_column
-    Group.column_names.include?(params[:sort]) ? params[:sort] : "name" 
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end  
