@@ -1,9 +1,11 @@
 module ApplicationHelper
 
-	def sortable(column, title = nil)
+	def sortable(column, title = nil, optional_columns = {})
     title ||= column.titleize
-   # css_class = column == sort_column ? "current #{sort_direction}" : nil
+    column = [column]
+   	column += optional_columns["columns"] if optional_columns.any?
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-		link_to title, { :sort => column, :direction => direction }
+  	link_to title, :sort => column, :direction => direction
 	end
+
 end
