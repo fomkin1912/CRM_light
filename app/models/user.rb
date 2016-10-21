@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, through: :group_users
  
-  has_one :address, as: :addressable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy, inverse_of: :addressable
   has_many :contacts
   has_many :assigned_contacts, class_name: :contacts, foreign_key: "assigned_to", validate: true
 
@@ -17,20 +17,15 @@ class User < ActiveRecord::Base
 
   has_many :contacts
 
-  after_initialize :init
-
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates :enabled, :admin, inclusion: {in: [true, false]}
+  #validates_associated :address
 
   accepts_nested_attributes_for :address, allow_destroy: true, update_only: true
 
   def full_name
     [name, mid_name, last_name].reject{ |x| x.blank? }.join(' ')
-  end
-
-  def init
-    self.address ||= build_address if self.new_record?
   end
 
 end

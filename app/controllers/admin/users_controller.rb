@@ -2,7 +2,6 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
-    render :index
   end
 
   def new
@@ -11,8 +10,9 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.build_address
     if @user.save
-      redirect_to users_path, notice: 'User was created.'
+      redirect_to users_path, nostice: 'User was created.'
     else
       render 'new'
     end
