@@ -3,21 +3,17 @@
   %table.my_table
     %thead
       %tr
-        %th Email
-        %th Name
-        %th Midname
-        %th Last name
-        %th Department
-        %th Position
+        %th= sortable("email")
+        %th= sortable("last_name", "Full name", {"columns" => ["name", "mid_name"]})
+        %th= sortable("department_id", "Department")
+        %th= sortable("position_id", "Position")
         %th Admin
         %th
     %tbody
       - @users.each do |user|  
         %tr
           %td= user.email
-          %td= user.name
-          %td= user.mid_name
-          %td= user.last_name
+          %td= user.full_name
           %td= user.department.title if user.department
           %td= user.position.title if user.position
           %td= user.admin
@@ -26,12 +22,12 @@
             =link_to 'Destroy', user_path(user), method: :delete
     %tfoot
       %tr
-        %td{:span => 3}
+        %td{:span => 2}
           %strong All users:
         %td
           %strong
             =@users.length
-        %td{:span => 3}
+        %td{:span => 2}
 %ul.nav.nav-pills
   %li
     =link_to "New user", new_user_path
