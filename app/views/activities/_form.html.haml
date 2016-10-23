@@ -1,0 +1,24 @@
+- if @activity.errors.any?
+  #error_explanation
+    = render 'shared/messages', obj: @activity
+.form-group
+  = f.label :contact_id
+  = f.collection_select :contact_id, Contact.all, :id, :full_name, prompt: true, html: {class: 'form-control'}
+.form-group
+  = f.label :activity_type_id
+  = f.collection_select :activity_type_id, ActivityType.all, :id, :title, prompt: true, html: {class: 'form-control'}
+.form-group
+  = f.label :subject
+  = f.text_field :subject, class: 'form-control'
+.form-group
+  = f.label :user_id
+  = f.collection_select :user_id, User.all, :id, :name, prompt: true, html: {class: 'form-control'}
+.form-group
+= f.label :info
+= f.text_area :info, rows: 3, class: 'form-control'
+.form-group
+  = f.label :date_planned
+  = f.date_field :date_planned, class: 'form-control'
+.form-group
+  = f.label :date
+  = f.date_field :date, class: 'form-control'

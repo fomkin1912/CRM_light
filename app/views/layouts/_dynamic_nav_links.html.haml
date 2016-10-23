@@ -3,7 +3,13 @@
   -if current_user.admin?
     %li= link_to 'Company types', company_types_path
     %li= link_to 'Companies', companies_path
-    %li= link_to 'Activity types', activity_types_path
+    %li.dropdown
+      %a.dropdown-toggle{href: "#", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-haspopup" => true, "aria-expanded" => false}
+        Activities
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to 'All', activities_path
+        %li= link_to 'Types of activities', activity_types_path
     %li.dropdown
       %a.dropdown-toggle{href: "#", class: "dropdown-toggle", "data-toggle" => "dropdown", role: "button", "aria-haspopup" => true, "aria-expanded" => false}
         Contacts

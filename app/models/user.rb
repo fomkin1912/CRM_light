@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_one :address, as: :addressable, dependent: :destroy, inverse_of: :addressable
   has_many :contacts
   has_many :assigned_contacts, class_name: :contacts, foreign_key: "assigned_to", validate: true
+  has_many :activities
 
   belongs_to :group
   belongs_to :department

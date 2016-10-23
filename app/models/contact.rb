@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
   has_many :addresses, as: :addressable, dependent: :destroy
+  has_many :activities
   belongs_to :company
   belongs_to :user
   belongs_to :assignee, foreign_key: "assigned_to", class_name: "User"
