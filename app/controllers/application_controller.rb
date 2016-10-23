@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   DefaultSortColumns = { "Group" => ["name"], "Company" => ["title"], "CompanyType" => ["title"],
    "Contact" => ["last_name", "first_name", "mid_name"], "User" => ["last_name", "name", "mid_name"],
-   "ActivityType" => ["title"]}
+   "ActivityType" => ["title"], "Activity" => ["created_at"]}
 
   helper_method :sort_column, :sort_direction
 

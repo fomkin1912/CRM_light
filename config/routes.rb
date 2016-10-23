@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :contacts
   resources :activity_types
+  resources :activities
 
   root to: 'welcome#index'
 

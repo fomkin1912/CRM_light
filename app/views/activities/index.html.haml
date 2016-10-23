@@ -1,0 +1,45 @@
+.container
+  .row
+    .col-md-3
+    .col-md-9
+      %h3
+        Activities
+        %table.my_table
+          %thead
+            %tr
+              %th Contact
+              %th Type
+              %th Subject
+              %th Info
+              %th User
+              %th Due at
+              %th Complited at
+              %th= sortable("created_at", "Created at")
+              %th
+          %tbody
+            -@activities.each do |a|  
+              %tr
+                %td= a.contact.full_name
+                %td= a.activity_type.title
+                %td= a.subject
+                %td= a.info
+                %td= a.user.name
+                %td= a.date_planned
+                %td= a.date
+                %td= a.created_at
+                %td
+                  =link_to 'Edit | ', edit_activity_path(a)
+                  =link_to 'Destroy', activity_path(a), method: :delete
+          %tfoot
+            %tr
+              %td{:span => 7}
+                %strong All activities
+              %td
+                %strong
+                  =@activities.length
+              %td
+      %ul.nav.nav-pills
+        %li
+          =link_to "New type", new_activity_path
+        %li.active
+          =link_to "Home", root_path
