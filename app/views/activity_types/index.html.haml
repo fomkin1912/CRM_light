@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-md-3
+    .col-md-9
+      %h3
+        Types of activities
+        %table.my_table
+          %thead
+            %tr
+              %th= sortable("title")
+              %th Created at
+              %th Updated at
+              %th
+          %tbody
+            -@activity_types.each do |at|  
+              %tr
+                %td= at.title
+                %td= at.created_at
+                %td= at.updated_at
+                %td
+                  =link_to 'Edit | ', edit_activity_type_path(at)
+                  =link_to 'Destroy', activity_type_path(at), method: :delete
+          %tfoot
+            %tr
+              %td{:span => 3}
+                %strong All types of activities
+              %td
+                %strong
+                  =@activity_types.length
+              %td
+      %ul.nav.nav-pills
+        %li
+          =link_to "New type", new_activity_type_path
+        %li.active
+          =link_to "Home", root_path

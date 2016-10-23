@@ -1,0 +1,6 @@
+.authform
+  = form_for @activity_type, html: {method: :patch, :role => 'form'} do |f|
+    %h3 Change type of activities
+    = render 'form', f: f
+    = f.submit "Change type", :class => 'button right'
+    = render "shared/form_nav_links", locals: { back: true }

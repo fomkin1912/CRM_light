@@ -76,8 +76,15 @@ RSpec.describe User, type: :model do
       end
     end
 
-    #context "Init method" do
-    #  it "trigger :init after initialize callback" do
+  describe "addressable through FactoryGirls" do
+    it "creates address record after user is saved" do
+    end
+    it "doesn't create address record if user is invalid"do
+    end
+    it "destroys associated record after user is destroyed" do
+    end
+  end
+
     #    user = User.create(name: "John", email: "j@J", password: "password")
     #    expect(user.address_id).to be_a(Integer)
     #  end
