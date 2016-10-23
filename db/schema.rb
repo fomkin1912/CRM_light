@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020170914) do
+ActiveRecord::Schema.define(version: 20161023052935) do
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "activity_types", ["title"], name: "index_activity_types_on_title"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street",           limit: 64

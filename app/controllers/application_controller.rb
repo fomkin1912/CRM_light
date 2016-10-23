@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   DefaultSortColumns = { "Group" => ["name"], "Company" => ["title"], "CompanyType" => ["title"],
-   "Contact" => ["last_name", "first_name", "mid_name"], "User" => ["last_name", "name", "mid_name"]}
+   "Contact" => ["last_name", "first_name", "mid_name"], "User" => ["last_name", "name", "mid_name"],
+   "ActivityType" => ["title"]}
 
   helper_method :sort_column, :sort_direction
 

@@ -1,0 +1,6 @@
+- if @activity_type.errors.any?
+  #error_explanation
+    = render 'shared/messages', obj: @activity_type
+.form-group
+  = f.label :title
+  = f.text_field :title, autofocus: true, class: 'form-control'
