@@ -9,5 +9,8 @@ FactoryGirl.define do
     info "meeting was success"
     date_planned "2016-10-23 16:03:19"
     date "2016-10-23 16:03:19"
+    activity_type
+    user
+    contact
   end
 end

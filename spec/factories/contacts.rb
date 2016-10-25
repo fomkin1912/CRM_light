@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :contact do
-    first_name "Ivan"
+    sequence(:first_name) { |n| "Ivan number #{n}" }
     last_name "Sergeevich"
     mid_name "Pupkin"
     email "MyString"
