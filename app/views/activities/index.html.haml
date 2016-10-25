@@ -7,7 +7,7 @@
           %li{role: "presentation", id: "completed-tab", class: "#{set_completed_tab_class}" }= link_to "Completed", { controller: "serve_activities", action: "completed", remote: true, completed: true }
         .container
           =form_tag activities_path, method: :get do
-            =select_tag "activity[contact][]", options_from_collection_for_select(Contact.all, "id", "full_name")
+            =select_tag "activity[contact_id]", options_from_collection_for_select(Contact.all, "id", "full_name", selected: selected_option), prompt: "select contact"
             %br
             =submit_tag
     .col-md-9

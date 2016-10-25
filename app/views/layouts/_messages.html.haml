@@ -1,5 +1,6 @@
 -# Rails flash messages styled for Bootstrap 3.0
 = content_tag :div, params.inspect
+= content_tag :div, session[:activities_page_state].inspect
 - flash.each do |name, msg|
   - if msg.is_a?(String)
     %div{:class => "alert alert-dismissible alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"}

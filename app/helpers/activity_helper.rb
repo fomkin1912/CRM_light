@@ -9,4 +9,9 @@ module ActivityHelper
     return "active" if session[:activities_page_state]["completed"] == true
     ""
   end
+
+  def selected_option
+    return params[:activity]["contact_id"] if params[:activity].present?
+    nil
+  end
 end

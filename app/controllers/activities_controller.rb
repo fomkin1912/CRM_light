@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 	before_action :set_page_state, only: [:index]
 
 	def index
-	  @activities = ServeActivitiesController.all_scoped(session[:activities_page_state]["completed"]).my(current_user)
+		@activities = ServeActivitiesController.all_scoped(session[:activities_page_state]).my(current_user)
 	end
 
 	def new
@@ -46,6 +46,7 @@ class ActivitiesController < ApplicationController
 
 	def set_page_state
 	  session[:activities_page_state] ||= { "completed" => false, "contact_id" => nil }
+	  session[:activities_page_state]["contact_id"] = params[:activity]["contact_id"] if params[:activity] && params[:activity]["contact_id"]
 	end
 
 end
