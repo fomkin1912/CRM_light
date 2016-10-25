@@ -19,7 +19,9 @@ RSpec.describe Activity, type: :model do
   context "scopes" do
     first_user = FactoryGirl.create(:user, name: "First user")
     second_user = FactoryGirl.create(:user, name: "Second user")
-    activity = FactoryGirl.create(:activity, user: first_user)
+    first_contact = FactoryGirl.create(:contact)
+    second_contact = FactoryGirl.create(:contact)
+    activity = FactoryGirl.create(:activity, user: first_user, contact: first_contact)
 
     it ":my scope" do
       expect(Activity.my(first_user)).to include(activity)
@@ -34,10 +36,14 @@ RSpec.describe Activity, type: :model do
    it ":completed scope" do
       activity.update(date: Date.today - 100)
       expect(Activity.completed).to include(activity)
-
       activity.update(date: nil)
       expect(Activity.completed).not_to include(activity)
     end
+    it ":by_contact_id scope" do
+      expect(Activity.by_contact_id(first_contact.id)).to include(activity)
+      expect(Activity.by_contact_id(second_contact.id)).not_to include(activity)
+    end
+
   end
 
 end
