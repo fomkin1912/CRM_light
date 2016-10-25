@@ -25,7 +25,7 @@ RSpec.describe Activity, type: :model do
       expect(Activity.my(first_user)).to include(activity)
       expect(Activity.my(second_user)).not_to include(activity)
     end
-   it ":date_planned scope" do
+   it ":planned scope" do
       activity.update(date_planned: Date.today + 100)
       expect(Activity.planned).to include(activity)
       activity.update(date_planned: Date.today - 100)

@@ -3,45 +3,12 @@
     .col-md-3
       %nav.navbar.navbar-default.navbar-fixed-left
         %ul.nav.nav-tabs
-          %li.active{role: "presentation"}= link_to "Planned", "#"
-          %li{role: "presentation", "data-toggle": "tab"}= link_to "Completed", "#"
+          %li.active{ role: "presentation" }= link_to "Planned", { controller: "serve_activities", action: "planned", remote: true } , data: { planned: true }
+          %li{role: "presentation", "data-toggle": "tab" }= link_to "Completed", { controller: "serve_activities", action: "completed", remote: true } , data: { completed: true }
     .col-md-9
       %h3
         Activities
-        %table.my_table
-          %thead
-            %tr
-              %th Contact
-              %th Type
-              %th Subject
-              %th Info
-              %th User
-              %th Due at
-              %th Complited at
-              %th= sortable("created_at", "Created at")
-              %th
-          %tbody
-            -@activities.each do |a|  
-              %tr
-                %td= a.contact.full_name
-                %td= a.activity_type.title
-                %td= a.subject
-                %td= a.info
-                %td= a.user.name
-                %td= a.date_planned
-                %td= a.date
-                %td= a.created_at
-                %td
-                  =link_to 'Edit | ', edit_activity_path(a)
-                  =link_to 'Destroy', activity_path(a), method: :delete
-          %tfoot
-            %tr
-              %td{:span => 7}
-                %strong All activities
-              %td
-                %strong
-                  =@activities.length
-              %td
+        =render 'activities'
       %ul.nav.nav-pills
         %li
           =link_to "New type", new_activity_path

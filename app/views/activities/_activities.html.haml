@@ -1,0 +1,34 @@
+%table.my_table#activities-list
+  %thead
+    %tr
+      %th Contact
+      %th Type
+      %th Subject
+      %th Info
+      %th User
+      %th Due at
+      %th Complited at
+      %th Created at
+      %th
+  %tbody
+    -@activities.each do |activity|
+      %tr
+        %td= activity.contact.full_name
+        %td= activity.activity_type.title
+        %td= activity.subject
+        %td= activity.info
+        %td= activity.user.name
+        %td= activity.date_planned
+        %td= activity.date
+        %td= activity.created_at
+        %td
+          =link_to 'Edit | ', edit_activity_path(activity)
+          =link_to 'Destroy', activity_path(activity), method: :delete
+  %tfoot
+    %tr
+      %td{:span => 7}
+        %strong All activities
+      %td
+        %strong
+          =@activities.length
+      %td

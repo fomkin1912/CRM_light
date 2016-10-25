@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :activity_types
   resources :activities
 
+  get "serve_activities/planned", to: "serve_activities#planned"
+  get "serve_activities/completed", to: "serve_activities#completed"
+
   root to: 'welcome#index'
 
   #Path to add_users action in GroupsController
