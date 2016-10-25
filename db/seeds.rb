@@ -42,31 +42,31 @@
     send_email = ActivityType.create(title: "Send email")
 
     pending_activity = Activity.create(user_id: admin.id, contact_id: petrov.id, activity_type_id: send_email.id,
-     subject: "send email to Petrov. Urgent!", date_planned: "2016-12-19")
+     subject: "send email to Petrov. Urgent!", date_planned: "2018-12-19")
     completed_activity = Activity.create(user_id: ivanov.id, contact_id: jarikov.id, activity_type_id: meet_up.id,
      subject: "meet Jarikov. Not urgent!", date_planned: "2016-10-19", date: "2016-12-19")
     in_process_activity = Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: phone_call.id,
-     subject: "call Rezakov. Not urgent!", info: "Call made. Everything OK", date_planned: "2016-10-19")
+     subject: "call Rezakov. Not urgent!", info: "Call made. Everything OK", date_planned: "2020-10-19")
     Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
-                    info: "Call made. Everything OK", date_planned: "2015-10-19")
+                    info: "Call made. Everything OK", date_planned: "2020-10-19")
     Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: meet_up.id, subject: "meet Rezakov. Not urgent!",
                     info: "Call made. Everything OK", date_planned: "2016-10-19", date: "2016-10-25")
     Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: send_email.id, subject: "mail Rezakov. Not urgent!",
-                    info: "", date_planned: "2016-10-19")
+                    info: "", date_planned: "2020-10-19")
     Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: phone_call.id, subject: "call Petrov. Not urgent!",
                     info: "Call made. Everything OK", date_planned: "2015-08-09", date: "2016-09-12")
     Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: meet_up.id, subject: "meet Petrov. Very very urgent. Not urgent!",
                     info: "Meet_up made. Everything OK", date_planned: "2014-05-01", date: "2015-03-20")
     Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: send_email.id, subject: "email Petrov. Not urgent!",
-                   info: "Call made. Everything OK", date_planned: "2016-06-30")
+                   info: "Call made. Everything OK", date_planned: "2020-06-30")
     Activity.create(user_id: koj.id, contact_id: jarikov.id, activity_type_id: phone_call.id, subject: "call Jarickov. Not urgent!",
                    info: "Call made. Everything OK", date_planned: "2016-10-01", date: "2016-10-15")
     Activity.create(user_id: koj.id, contact_id: jarikov.id, activity_type_id: meet_up.id, subject: "meets up with Jarikov. Very urgent!",
-                   info: "Call made. Everything OK", date_planned: "2016-09-05")
+                   info: "Call made. Everything OK", date_planned: "2020-12-05")
     Activity.create(user_id: ivanov.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
-                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+                   info: "Call made. Everything OK", date_planned: "2020-10-19")
     Activity.create(user_id: ivanov.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
-                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+                   info: "Call made. Everything OK", date_planned: "2020-10-19")
     Activity.create(user_id: admin.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
-                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+                   info: "Call made. Everything OK", date_planned: "2020-10-19")
     

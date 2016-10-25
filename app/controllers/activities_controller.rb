@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
 
 	def index
-	  @activities = Activity.my(current_user).order(sort_clause)
+		@@page_state = { completed: false } if new_request?
+	  @activities = ServeActivitiesController.all_scoped(serve_params).my(current_user)
 	end
 
 	def new
@@ -40,6 +41,15 @@ class ActivitiesController < ApplicationController
 
 	def activity_params
 	  params.require(:activity).permit(:user_id, :activity_type_id, :user_id, :contact_id, :subject, :info, :date_planned, :date)
+	end
+
+	def serve_params
+		params.slice(:completed)
+	end
+
+	def new_request?
+	  source_controller = Rails.application.routes.recognize_path(request.referrer)[:controller]
+	  source_controller != "activities" && source_controller != "serve_activities"
 	end
 
 end

@@ -3,8 +3,8 @@
     .col-md-3
       %nav.navbar.navbar-default.navbar-fixed-left
         %ul.nav.nav-tabs
-          %li.active{ role: "presentation" }= link_to "Planned", { controller: "serve_activities", action: "planned", remote: true } , data: { planned: true }
-          %li{role: "presentation", "data-toggle": "tab" }= link_to "Completed", { controller: "serve_activities", action: "completed", remote: true } , data: { completed: true }
+          %li.active{ role: "presentation", id: "planned-tab" }= link_to "Planned", { controller: "serve_activities", action: "planned", remote: true, completed: false }
+          %li{role: "presentation", id: "completed-tab" }= link_to "Completed", { controller: "serve_activities", action: "completed", remote: true, completed: true }
     .col-md-9
       %h3
         Activities
