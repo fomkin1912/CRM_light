@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
 	def index
-	  @activities = Activity.order(sort_clause)
+	  @activities = Activity.my(current_user).order(sort_clause)
 	end
 
 	def new
@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
 	  @activity = Activity.find(params[:id])
 	  @activity.update(activity_params)
 	  if @activity.save
-      redirect_to activity_path, notice: "Activity for \'#{@activity.user.name}\' changed."
+      redirect_to activities_path, notice: "Activity for \'#{@activity.user.name}\' changed."
     else
       render "edit"
     end

@@ -19,7 +19,7 @@
       = f.text_field :last_name, class: 'form-control'
     %fieldset
       .form-group
-        = f.fields_for :address_attributes, @user.address do |a|
+        = f.fields_for :address_attribute, @user.address do |a|
           = a.label :street
           = a.text_field :street, class: 'form-control'
       .form-group

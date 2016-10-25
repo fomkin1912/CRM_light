@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :group_users
   has_many :groups, through: :group_users
  
-  has_one :address, as: :addressable, dependent: :destroy, inverse_of: :addressable
+  has_one :address, as: :addressable, foreign_key: :addressable_id, dependent: :destroy, inverse_of: :addressable
   has_many :contacts
   has_many :assigned_contacts, class_name: :contacts, foreign_key: "assigned_to", validate: true
   has_many :activities

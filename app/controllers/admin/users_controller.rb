@@ -43,7 +43,7 @@ class Admin::UsersController < ApplicationController
   protected
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :mid_name, :last_name, :admin, :department_id, :position_id, address_attributes: [:id, :street])
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :mid_name, :last_name, :admin, :department_id, :position_id, addressable_attribute: [:id, :street])
   end
 
 end

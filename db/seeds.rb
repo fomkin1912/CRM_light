@@ -11,8 +11,8 @@
     sec = Position.create(title: "Secretary")
     boss = Position.create(title: "Boss")
 
-	  admin = User.create(name: "Admin user", email: "1@1", last_name: "Pupkin", password: "123123", admin: true, enabled: true)
-    koj = User.create(name: "Ivan", mid_name: "Sergeevich", last_name: "Kojemiako", email: "2@2", password: "123123", admin: false, enabled: true, department_id: admin_dept.id, position_id: sec.id)
+	admin = User.create(name: "Admin user", email: "1@1", last_name: "Pupkin", password: "123123", admin: true, enabled: true)
+    koj = User.create(name: "Ivan", mid_name: "Sergeevich", last_name: "Kojemiako", email: "2@2", password: "123123", admin: true, enabled: true, department_id: admin_dept.id, position_id: sec.id)
     ivanov = User.create(name: "Alexander", mid_name: "Ivanovich", last_name: "Ivanov", email: "3@3", password: "123123", admin: false, enabled: true, department_id: exec_dept.id, position_id: boss.id)
 
     Group.create(name: "First group", created_by: admin.id)
@@ -47,4 +47,26 @@
      subject: "meet Jarikov. Not urgent!", date_planned: "2016-10-19", date: "2016-12-19")
     in_process_activity = Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: phone_call.id,
      subject: "call Rezakov. Not urgent!", info: "Call made. Everything OK", date_planned: "2016-10-19")
-
+    Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
+                    info: "Call made. Everything OK", date_planned: "2015-10-19")
+    Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: meet_up.id, subject: "meet Rezakov. Not urgent!",
+                    info: "Call made. Everything OK", date_planned: "2016-10-19", date: "2016-10-25")
+    Activity.create(user_id: koj.id, contact_id: rezakov.id, activity_type_id: send_email.id, subject: "mail Rezakov. Not urgent!",
+                    info: "", date_planned: "2016-10-19")
+    Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: phone_call.id, subject: "call Petrov. Not urgent!",
+                    info: "Call made. Everything OK", date_planned: "2015-08-09", date: "2016-09-12")
+    Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: meet_up.id, subject: "meet Petrov. Very very urgent. Not urgent!",
+                    info: "Meet_up made. Everything OK", date_planned: "2014-05-01", date: "2015-03-20")
+    Activity.create(user_id: koj.id, contact_id: petrov.id, activity_type_id: send_email.id, subject: "email Petrov. Not urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-06-30")
+    Activity.create(user_id: koj.id, contact_id: jarikov.id, activity_type_id: phone_call.id, subject: "call Jarickov. Not urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-10-01", date: "2016-10-15")
+    Activity.create(user_id: koj.id, contact_id: jarikov.id, activity_type_id: meet_up.id, subject: "meets up with Jarikov. Very urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-09-05")
+    Activity.create(user_id: ivanov.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+    Activity.create(user_id: ivanov.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+    Activity.create(user_id: admin.id, contact_id: rezakov.id, activity_type_id: phone_call.id, subject: "call Rezakov. Not urgent!",
+                   info: "Call made. Everything OK", date_planned: "2016-10-19")
+    
