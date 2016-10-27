@@ -8,9 +8,9 @@ group :development do
   gem 'sqlite3', '~> 1.3.8'
   gem 'pry-rails', '0.3.4'
   gem 'rails_layout'
-#  gem 'guard'
-#  gem 'guard-rspec'
-#  gem 'guard-rails'
+# gem 'guard'
+# gem 'guard-rspec'
+# gem 'guard-rails'
 end
 
 group :development, :test do
@@ -18,7 +18,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'byebug'
   gem 'spring'
-end	
+end
 
 group :test do
   gem 'faker', '~> 1.4.3'
@@ -35,7 +35,7 @@ gem 'devise', '4.2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'html2haml'
 
-#Standart gems
+# Standart gems
 gem 'sass-rails', '5.0.6'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.1.0'

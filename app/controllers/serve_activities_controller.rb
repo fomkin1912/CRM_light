@@ -1,9 +1,9 @@
 class ServeActivitiesController < ActivitiesController
 
-	before_action :set_activities_scope, only: [:by_contact_id]
+	before_action :set_activities_scope, only: [:by_contact_id, :new]
 
 	def self.all_scoped(page_state)
-	  	@activities = Activity
+		  @activities = Activity.all
 	  	@activities = @activities.by_contact_id(page_state["contact_id"]) if page_state["contact_id"].present?
 	  	return @activities = @activities.planned if page_state["completed"] == false 
 	  	@activities.completed
@@ -20,10 +20,6 @@ class ServeActivitiesController < ActivitiesController
 		set_activities_scope
 	end
 
-	def by_contact_id
-		@activities
-	end
-
 	private
 	  def set_activities_scope
 	  	state_contact_id = session[:activities_page_state]["contact_id"]
@@ -33,5 +29,10 @@ class ServeActivitiesController < ActivitiesController
 	  	return @activities = @activities.planned if state_completed == false 
 	  	@activities = @activities.completed
 	  end
+
+  def set_page_state
+	  session[:activities_page_state] ||= { "completed" => false, "contact_id" => nil }
+	  session[:activities_page_state]["contact_id"] = params[:activity]["contact_id"] if params[:activity] && params[:activity]["contact_id"]
+	end
 
 end
