@@ -5,7 +5,7 @@ module ApplicationHelper
     column = [column]
    	column += optional_columns["columns"] if optional_columns.any?
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-  	link_to title, :sort => column, :direction => direction
+  	link_to title, params.merge(:sort => column, :direction => direction)
 	end
 
 end

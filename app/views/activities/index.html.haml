@@ -1,10 +1,25 @@
 .container
   .row
     .col-md-3
-      %nav.navbar.navbar-default.navbar-fixed-left
-        %ul.nav.nav-tabs
-          %li.active{role: "presentation"}= link_to "Planned", "#"
-          %li{role: "presentation", "data-toggle": "tab"}= link_to "Completed", "#"
+      .container
+        =form_tag activities_path, method: "get"
+        =hidden_field_tag :direction, params[:direction]
+        =hidden_field_tag "sort[]", params[:sort]
+        =label_tag :completed
+        =radio_button_tag :completed, true, included_in_params?(:completed), id: "completed"
+        %br
+        =label_tag :planned
+        =radio_button_tag :completed, false, !included_in_params?(:completed), id: "planned"
+        %br
+        =label_tag :select_all, "Select all:"
+        =radio_button_tag "select_all", true, included_in_params?(:select_all), id: "select_all"
+        %br
+        =label_tag :select_by_contact
+        =radio_button_tag "select_all", "", !included_in_params?(:select_all), id: "select_by_contact"
+        %br
+        =select_tag "select_by_contact_id", options_from_collection_for_select(Contact.all, 'id', 'full_name', params[:select_by_contact_id]), prompt: "Select contact", disabled: select_by_contact_id_disabled?(:select_by_contact_id)
+        %br
+        =submit_tag "Filter", name: nil
     .col-md-9
       %h3
         Activities

@@ -1,7 +1,10 @@
 class ActivitiesController < ApplicationController
 
 	def index
-	  @activities = Activity.my(current_user).order(sort_clause)
+	  @activities = Activity.my(current_user)
+	  filtering_params.each do |key, value|
+	    @activities = @activities.public_send(key, value) if value.present?
+	  end
 	end
 
 	def new
@@ -39,7 +42,14 @@ class ActivitiesController < ApplicationController
 	private
 
 	def activity_params
-	  params.require(:activity).permit(:user_id, :activity_type_id, :user_id, :contact_id, :subject, :info, :date_planned, :date)
+	  params.require(:activity).permit(:user_id, :activity_type_id, :user_id, :contact_id, :subject, :info, :date_planned, :date, :sort)
+	end
+
+	def filtering_params
+ 		params.merge!(completed: "false") unless params[:completed]
+	  params.merge!(select_all: "true") unless params[:select_all]
+		params.slice(:select_by_contact_id, :completed)
+		
 	end
 
 end
