@@ -1,4 +1,6 @@
 class Activity < ActiveRecord::Base
+  include Filterable
+  
   belongs_to :user
   belongs_to :contact
   belongs_to :activity_type
@@ -14,5 +16,6 @@ class Activity < ActiveRecord::Base
       where("date NOT NULL")
     end
    }
+  scope :select_all, -> (selector) { where(nil) }  
   
 end

@@ -1,10 +1,7 @@
 class ActivitiesController < ApplicationController
 
 	def index
-	  @activities = Activity.my(current_user)
-	  filtering_params.each do |key, value|
-	    @activities = @activities.public_send(key, value) if value.present?
-	  end
+	  @activities = Activity.my(current_user).filter(filtering_params)
 	end
 
 	def new
@@ -48,8 +45,7 @@ class ActivitiesController < ApplicationController
 	def filtering_params
  		params.merge!(completed: "false") unless params[:completed]
 	  params.merge!(select_all: "true") unless params[:select_all]
-		params.slice(:select_by_contact_id, :completed)
-		
+		params.slice(:select_all, :select_by_contact_id, :completed)
 	end
-
+	
 end
