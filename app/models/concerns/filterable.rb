@@ -6,9 +6,9 @@ module Filterable
 
   module ClassMethods
     def filter(filtering_params)
-    	results = self
+    	results = self.where(nil)
     	filtering_params.each do |key, value|
-    		results = results.public_send(key, value) if value.present?
+    		results = results.public_send(key.to_sym, value) if value.present?
       end
       results
     end

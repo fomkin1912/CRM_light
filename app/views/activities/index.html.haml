@@ -11,13 +11,9 @@
         =label_tag :planned
         =radio_button_tag :completed, false, !included_in_params?(:completed), id: "planned"
         %br
-        =label_tag :select_all, "Select all:"
-        =radio_button_tag "select_all", true, included_in_params?(:select_all), id: "select_all"
+        =label_tag :select_by_contact, "Select by contact:"
         %br
-        =label_tag :select_by_contact
-        =radio_button_tag "select_all", "", !included_in_params?(:select_all), id: "select_by_contact"
-        %br
-        =select_tag "select_by_contact_id", options_from_collection_for_select(Contact.all, 'id', 'full_name', params[:select_by_contact_id]), prompt: "Select contact", disabled: select_by_contact_id_disabled?(:select_by_contact_id)
+        =select_tag "select_by_contact", options_from_collection_for_select(Contact.all, 'id', 'full_name', params[:select_by_contact]), prompt: "Select all"
         %br
         =submit_tag "Filter", name: nil
     .col-md-9

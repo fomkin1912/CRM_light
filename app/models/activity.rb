@@ -8,7 +8,7 @@ class Activity < ActiveRecord::Base
   validates :activity_type, :user, :contact, :subject, presence: true
 
   scope :my, -> (user) { where("user_id = ?", user.id) }
-  scope :select_by_contact_id, -> (contact_id) { where("contact_id = ?", contact_id) }
+  scope :select_by_contact, -> (contact_id) { where("contact_id = ?", contact_id) }
   scope :completed, -> (true_or_false) { 
     if true_or_false == "false"
       where("date_planned > ?", Date.today)
@@ -16,6 +16,6 @@ class Activity < ActiveRecord::Base
       where("date NOT NULL")
     end
    }
-  scope :select_all, -> (selector) { where(nil) }  
+  #scope :select_all, -> (selector) { where(nil) }  
   
 end
