@@ -1,9 +1,10 @@
 class ActivitiesController < ApplicationController
+	include PageStateful
 
 	before_action :set_page_state, only: [:index]
 
 	def index
-		@activities = ServeActivitiesController.all_scoped(session[:activities_page_state]).my(current_user)
+	  @activities = Activity.my(current_user).filter(params.slice(:select_by_contact, :completed))
 	end
 
 	def new
@@ -41,12 +42,7 @@ class ActivitiesController < ApplicationController
 	private
 
 	def activity_params
-	  params.require(:activity).permit(:user_id, :activity_type_id, :user_id, :contact_id, :subject, :info, :date_planned, :date)
-	end
-
-	def set_page_state
-	  session[:activities_page_state] ||= { "completed" => false, "contact_id" => nil }
-	  session[:activities_page_state]["contact_id"] = params[:activity]["contact_id"] if params[:activity] && params[:activity]["contact_id"]
+	  params.require(:activity).permit(:user_id, :activity_type_id, :user_id, :contact_id, :subject, :info, :date_planned, :date, :sort)
 	end
 
 end

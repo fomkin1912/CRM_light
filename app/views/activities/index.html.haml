@@ -1,15 +1,21 @@
 .container
   .row
     .col-md-3
-      %nav.navbar.navbar-default.navbar-fixed-left
-        %ul.nav.nav-tabs
-          %li{ role: "presentation", id: "planned-tab", class: "#{set_planned_tab_class}" }= link_to "Planned", { controller: "serve_activities", action: "planned", remote: true, completed: false }
-          %li{role: "presentation", id: "completed-tab", class: "#{set_completed_tab_class}" }= link_to "Completed", { controller: "serve_activities", action: "completed", remote: true, completed: true }
-        .container
-          =form_tag activities_path, method: :get do
-            =select_tag "activity[contact_id]", options_from_collection_for_select(Contact.all, "id", "full_name", selected: selected_option), prompt: "select contact"
-            %br
-            =submit_tag
+      .container
+        =form_tag activities_path, method: "get"
+        =hidden_field_tag :direction, params[:direction]
+        =hidden_field_tag "sort[]", params[:sort]
+        =label_tag :completed
+        =radio_button_tag :completed, true, included_in_params?(:completed), id: "completed"
+        %br
+        =label_tag :planned
+        =radio_button_tag :completed, false, !included_in_params?(:completed), id: "planned"
+        %br
+        =label_tag :select_by_contact, "Select by contact:"
+        %br
+        =select_tag "select_by_contact", options_from_collection_for_select(Contact.all, 'id', 'full_name', params[:select_by_contact]), prompt: "Select all"
+        %br
+        =submit_tag "Filter", name: nil
     .col-md-9
       %h3
         Activities

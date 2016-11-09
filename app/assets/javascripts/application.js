@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).on("page:change", function(){
+	$("#select_all").click(function(){
+  	$("#select_all").attr("checked", "checked");
+		$("#select_by_contact").removeAttr("checked");
+		$("#select_by_contact_id").attr("disabled","disabled");
+		$("#select_by_contact_id").prop("selectedIndex", 0);
+	});
+	$("#select_by_contact").click(function(){
+		$("#select_all").removeAttr("checked");
+		$("#select_by_contact").attr("checked", "checked");
+		$("#select_by_contact_id").removeAttr("disabled");
+	});
+});

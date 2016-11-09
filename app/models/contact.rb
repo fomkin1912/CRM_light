@@ -8,6 +8,7 @@ class Contact < ActiveRecord::Base
   validates :first_name, :user_id, :access, presence:true
   validate :full_name_must_be_unique
 
+
   def full_name
     return [last_name, first_name, mid_name].reject { |n| n.blank? }.join(' ') unless first_name.blank?
     nil
