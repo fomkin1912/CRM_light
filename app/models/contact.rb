@@ -10,13 +10,11 @@ class Contact < ActiveRecord::Base
 
 
   def full_name
-    return [last_name, first_name, mid_name].reject { |n| n.blank? }.join(' ') unless first_name.blank?
-    nil
+    [last_name, first_name, mid_name].reject { |n| n.blank? }.join(' ')
   end
 
   def name
-    return nil if first_name.blank?
-    return first_name if last_name.empty? && mid_name.empty? || last_name.empty?
+    return first_name if last_name.empty? && mid_name.empty?
   	last_name + ' ' + [first_name, mid_name].reject { |n| n.blank? }.map { |n| n[0].upcase + '.' }.join(' ')
 	
   end
